@@ -3,7 +3,7 @@ FROM ich777/debian-baseimage
 LABEL maintainer="admin@minenet.at"
 
 ARG MEDIA_DRV_VERSION=21.2.3
-ARG BUILD_TAG="default"
+ARG BUILD_TAG="stable"
 
 RUN apt-get update && \
   apt-get -y install --no-install-recommends ca-certificates gnupg wget xz-utils apt-transport-https curl
