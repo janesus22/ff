@@ -3,7 +3,6 @@ FROM ich777/debian-baseimage
 LABEL maintainer="admin@minenet.at"
 
 ARG MEDIA_DRV_VERSION=21.2.3
-ARG BUILD_TAG="stable"
 
 RUN apt-get update && \
   apt-get -y install --no-install-recommends ca-certificates gnupg wget xz-utils apt-transport-https curl
@@ -11,7 +10,7 @@ RUN apt-get update && \
 RUN curl -s https://repo.jellyfin.org/debian/jellyfin_team.gpg.key | apt-key add - && \
   echo 'deb [arch=amd64] https://repo.jellyfin.org/debian bullseye main' > /etc/apt/sources.list.d/jellyfin.list && \
   apt-get update  &&\
-  apt-get -y install --no-install-recommends jellyfin=${BUILD_TAG} mesa-va-drivers jellyfin-ffmpeg openssl locales && \
+  apt-get -y install --no-install-recommends jellyfin mesa-va-drivers jellyfin-ffmpeg openssl locales && \
   wget -O /tmp/intel-media.tar.gz https://github.com/ich777/media-driver/releases/download/intel-media-${MEDIA_DRV_VERSION}/intel-media-${MEDIA_DRV_VERSION}.tar.gz && \
   cd /tmp && \
   tar -C / -xvf /tmp/intel-media.tar.gz && \
